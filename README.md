@@ -1,8 +1,6 @@
 # K8s-ImagePipeline
 # harbor 安裝
-## harbor 下載
-``wget https://github.com/goharbor/harbor/releases/download/v2.12.2-rc1/harbor-offline-installer-v2.12.2-rc1.tgz``
-## docker proxy配置
+## Docker proxy配置
 ### vim /etc/systemd/system/docker.service.d/http-proxy.conf
 ```
 [Service]
@@ -17,4 +15,45 @@ export http_proxy=http://10.33.55.87:3128
 export https_proxy=http://10.33.55.87:3128
 EOF
 source ~/.bashrc
+```
+## harbor 下載
+```
+wget https://github.com/goharbor/harbor/releases/download/v2.12.2-rc1/harbor-offline-installer-v2.12.2-rc1.tgz
+tar zxvf harbor-offline-installer-v2.12.2-rc1.tgz
+cd harbor/
+mv harbor.yml.tmpl harbor.yml
+
+```
+## 創建腳本-自簽憑證.sh
+### vim ca.sh
+```
+#!/bin/bash
+registry_ip="${ip}"
+# 創建資料夾
+mkdir -p /var/lib/harbor/data/cert/
+# 產生自簽憑證
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
+  -keyout harbor.key -out harbor.crt \
+  -subj "/C=XX/L=Default City/O=Default Company Ltd/CN=${registry_ip}" \
+  -addext "subjectAltName=IP:${registry_ip}"
+
+# crt/key複製到registry底下
+cp harbor.crt /var/lib/harbor/data/cert/
+cp harbor.key /var/lib/harbor/data/cert/
+
+
+# crt/key複製到docker底下
+cp harbor.crt /etc/docker/certs.d/${registry_ip}
+cp harbor.key /etc/docker/certs.d/${registry_ip}
+systemctl daemon-reload
+systemctl restart docker
+
+```
+## 修改 harbor.yml 
+
+```
+hostname: ${ip}
+certificate: /var/lib/harbor/data/cert/harbor.crt
+private_key: /var/lib/harbor/data/cert/harbor.key
+
 ```
