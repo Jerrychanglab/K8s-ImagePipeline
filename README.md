@@ -66,6 +66,10 @@ certificate: /var/lib/harbor/data/cert/harbor.crt
 private_key: /var/lib/harbor/data/cert/harbor.key
 
 ```
+## docker login
+```
+docker login https://${registry_ip}
+```
 ## 登入harbor Web
 ![image](https://github.com/user-attachments/assets/71d8a85e-06ee-473e-83e7-2ae9c0361fe0)
 ![image](https://github.com/user-attachments/assets/99da4072-c9d7-4ba4-9607-c879de74a220)
