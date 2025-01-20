@@ -50,6 +50,8 @@ systemctl restart docker
 
 ```
 ## 修改 harbor.yml 
+### 如圖片修改
+![image](https://github.com/user-attachments/assets/90925320-f4b8-4599-a8cd-bfd39abb12d8)
 
 ```
 hostname: ${ip}
