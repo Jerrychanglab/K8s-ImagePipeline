@@ -16,6 +16,13 @@ export https_proxy=http://10.33.55.87:3128
 EOF
 source ~/.bashrc
 ```
+## 建置docker daemon.json
+### vim /etc/docker/daemon.json
+```
+{
+"insecure-registries": ["https://${registry_ip}"]
+}
+```
 ## harbor 下載
 ```
 wget https://github.com/goharbor/harbor/releases/download/v2.12.2-rc1/harbor-offline-installer-v2.12.2-rc1.tgz
@@ -59,3 +66,7 @@ certificate: /var/lib/harbor/data/cert/harbor.crt
 private_key: /var/lib/harbor/data/cert/harbor.key
 
 ```
+## 登入harbor Web
+![image](https://github.com/user-attachments/assets/71d8a85e-06ee-473e-83e7-2ae9c0361fe0)
+![image](https://github.com/user-attachments/assets/99da4072-c9d7-4ba4-9607-c879de74a220)
+
