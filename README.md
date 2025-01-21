@@ -17,6 +17,12 @@ export https_proxy=http://10.33.55.87:3128
 EOF
 source ~/.bashrc
 ```
+# Docker Images Build
+## 創建Dockerfile文件
+## 編寫內容
+## Images Build
+## 測試驗證
+
 # harbor 安裝
 ## harbor 下載
 ```
