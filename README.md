@@ -1,7 +1,6 @@
 # K8s-ImagePipeline
 ![image](https://github.com/user-attachments/assets/5b882a2d-98f0-42cd-9f34-e9b8f5cb6ff4)
 
-# harbor 安裝
 ## Docker proxy配置
 ### vim /etc/systemd/system/docker.service.d/http-proxy.conf
 ```
@@ -18,13 +17,7 @@ export https_proxy=http://10.33.55.87:3128
 EOF
 source ~/.bashrc
 ```
-## 建置docker daemon.json
-### vim /etc/docker/daemon.json
-```
-{
-"insecure-registries": ["https://${registry_ip}"]
-}
-```
+# harbor 安裝
 ## harbor 下載
 ```
 wget https://github.com/goharbor/harbor/releases/download/v2.12.2-rc1/harbor-offline-installer-v2.12.2-rc1.tgz
@@ -38,6 +31,13 @@ mv harbor.yml.tmpl harbor.yml
 ```
 #!/bin/bash
 registry_ip="${ip}"
+# docker daemon配置
+cat <<EOF | sudo tee /etc/docker/daemon.json > /dev/null
+{
+  "insecure-registries": ["https://${registry_ip}"]
+}
+EOF
+
 # 創建資料夾
 mkdir -p /var/lib/harbor/data/cert/
 # 產生自簽憑證
