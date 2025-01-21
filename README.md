@@ -1,4 +1,6 @@
 # K8s-ImagePipeline
+![image](https://github.com/user-attachments/assets/a1bc59dc-bca6-40b5-a308-83f5bd6ffedc)
+
 # harbor 安裝
 ## Docker proxy配置
 ### vim /etc/systemd/system/docker.service.d/http-proxy.conf
