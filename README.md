@@ -30,7 +30,7 @@ mv harbor.yml.tmpl harbor.yml
 ### vim ca.sh
 ```
 #!/bin/bash
-registry_ip="${ip}"
+registry_ip="${ip}" # 需定義你的Registry IP
 # docker daemon配置
 cat <<EOF | sudo tee /etc/docker/daemon.json > /dev/null
 {
@@ -49,7 +49,6 @@ openssl req -x509 -nodes -days 3650 -newkey rsa:2048 \
 # crt/key複製到registry底下
 cp harbor.crt /var/lib/harbor/data/cert/
 cp harbor.key /var/lib/harbor/data/cert/
-
 
 # crt/key複製到docker底下
 cp harbor.crt /etc/docker/certs.d/${registry_ip}
