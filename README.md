@@ -1,5 +1,5 @@
 # K8s-ImagePipeline
-![image](https://github.com/user-attachments/assets/a1bc59dc-bca6-40b5-a308-83f5bd6ffedc)
+![image](https://github.com/user-attachments/assets/5b882a2d-98f0-42cd-9f34-e9b8f5cb6ff4)
 
 # harbor 安裝
 ## Docker proxy配置
