@@ -72,7 +72,11 @@ private_key: /var/lib/harbor/data/cert/harbor.key
 ```
 docker login https://${registry_ip}
 ```
+![image](https://github.com/user-attachments/assets/99129f1b-8237-43d7-8974-2f00f2029209)
+
 ## 登入harbor Web
+### 建置專案
 ![image](https://github.com/user-attachments/assets/71d8a85e-06ee-473e-83e7-2ae9c0361fe0)
 ![image](https://github.com/user-attachments/assets/99da4072-c9d7-4ba4-9607-c879de74a220)
 
+## 
